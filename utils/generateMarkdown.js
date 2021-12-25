@@ -10,9 +10,34 @@ function renderLicenseLink(license) {}
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
+const cap = word => word[0].toUpperCase() + word.slice(1,word.length)
+
+const makeSections = (sections) => {
+  var headers = Object.keys(sections);
+  return headers.filter(header => sections[header] !== '' )
+  .map(header => {
+    return`
+## ${cap(header)}
+
+${sections[header]}
+  `}).join('')
+}
+
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+
   return `# ${data.title}
+
+## Table of Contents
+
+${makeSections(data.sections)}
+
+## Usage
+
+## Tests
+
+## Questions
 
 `;
 }
