@@ -12,7 +12,8 @@ const mockData = {
   sections: {
     description: 'a readme generator',
     installation: 'install node, npm install inquirer, node init',
-    usage: 'node index.js ["-d" for debug]',
+    contributing: '',
+    usage: '`node index.js ["-d" for debug]`',
     tests: '',
     license: 'CC0',
   },
@@ -24,7 +25,9 @@ const mockData = {
     }
   ],
   confirmLicense: true,
-  github: 'scottrohrig'
+  github: 'scottrohrig',
+  email: 'sco@email.co',
+  link: 'https://github.com/scottrohrig'
 };
 
 // TODO: Create an array of questions for user input
@@ -104,13 +107,38 @@ const questions = [
       }
     }
   },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'Enter your email',
+    validate: email => {
+      if (email) {
+        return true;
+      } else {
+        console.log('Provide a valid email')
+        return false;
+      }
+    }
+  },
+  {
+    type: 'input',
+    name: 'link',
+    message: 'Enter your project url',
+    validate: link => {
+      if (link) {
+        return true;
+      } else {
+        console.log('Provide a valid url')
+        return false;
+      }
+    }
+  },
 ];
 
 // TODO: Create a function to write README file
 const writeToFile = (fileContent) => {
     return new Promise((resolve, reject) => {
       fs.writeFile("./dist/README.md", fileContent, (err) => {
-        // if there's an error, reject the Promise and send the error to the Promise's .catch() method
         if (err) {
           reject(err);
           return;
