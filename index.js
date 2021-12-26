@@ -12,9 +12,9 @@ const mockData = {
   sections: {
     description: 'a readme generator',
     installation: 'install node, npm install inquirer, node init',
-    contributing: '',
+    contributing: 'Not taking pull requests at the moment.',
     usage: '`node index.js ["-d" for debug]`',
-    tests: '',
+    tests: 'do some tests',
     license: 'CC0',
   },
   sectionsArr: [

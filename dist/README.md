@@ -6,17 +6,17 @@ a readme generator
 
 ## Table of Contents
 
-[Description](#description)
+[Description](#description) 
 
-[Installation](#installation)
+[Installation](#installation) 
 
-[Usage](#usage)
+[Contributing](#contributing) 
+
+[Usage](#usage) 
+
+[Tests](#tests) 
 
 [License](#license)
-
-[Contributing](#contributing)
-
-[Tests](#tests)
 
 [Questions](#questions)
 
@@ -25,24 +25,33 @@ a readme generator
 
 install node, npm install inquirer, node init
 
-    
 
-
-## Installation
+## Usage
 
 `node index.js ["-d" for debug]`
-
-    
 
 ## License
 
 CC0
 
 
+## Contributing
+
+Not taking pull requests at the moment.
 
 
+## Tests
+
+do some tests
 
 ## Questions
 
+GitHub Username: scottrohrig
+
+GitHub Profile: https://github.com/scottrohrig
+
+Email: sco@email.co
+
+Project Repository/URL: https://github.com/scottrohrig
 
 
