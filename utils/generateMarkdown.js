@@ -23,9 +23,7 @@ const filteredSection = (header, text) => {
     return `
 ## ${header}
 
-${text}
-
-    `
+${text}`
   }
 };
 
@@ -44,25 +42,31 @@ ${sections.description}
 
 ## Table of Contents
 
-${headers.map(header => renderLink(header))}
+${headers.map(header => renderLink(header)).join(' \n\n')}
 
 [Questions](#questions)
 
 ${filteredSection('Installation',sections.installation)}
 
-${filteredSection('Installation',sections.usage)}
+${filteredSection('Usage',sections.usage)}
 
 ## License
 
 ${renderLicenseBadge(sections.license)}
 
-${filteredSection('Installation',sections.contributing)}
+${filteredSection('Contributing',sections.contributing)}
 
-${filteredSection('Installation',sections.tests)}
+${filteredSection('Tests',sections.tests)}
 
 ## Questions
 
-${''}
+GitHub Username: ${github}
+
+GitHub Profile: https://github.com/${github}
+
+Email: ${email}
+
+Project Repository/URL: ${link}
 
 `;
 }
