@@ -1,14 +1,21 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) { return license }
+function renderLicenseBadge(license) { 
+  return `![${license} License](https://img.shields.io/badge/License-${license}-orange)`
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) { return `[${renderLicenseBadge(license)}](https://choosealicense.com/licenses/${license.toLowerCase()})` }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license, confirmLicense) { return confirmLicense ? `
+## License
+
+${renderLicenseLink(license)}
+
+` : ''}
 
 const cap = word => word[0].toUpperCase() + word.slice(1,word.length)
 
@@ -16,29 +23,34 @@ function renderLink(header) {
   return `[${cap(header)}](#${header})`
 }
 
-const filteredSection = (header, text) => {
-  if (!text) {
-    return '';
-  } else {
-    return `
+const filterSection = (header, text) => {
+  return !text ? '' : `
 ## ${header}
 
 ${text}`
-  }
 };
 
 
   
   // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const {title, sections, github, email, link} = data
-  const headers = Object.keys(sections);
+  const { 
+    title, github, email, link, description, installation, usage, license, contributing, tests, confirmLicense, questions
+  } = data
+
+  // list of sections containing content
+  const headers = [
+    'description','installation','usage',
+    'contributing','tests','license']
+      .filter(v => data[v] !== '');
 
   return `# ${title}
 
+***
+
 ## Description
 
-${sections.description}
+${description}
 
 ## Table of Contents
 
@@ -46,27 +58,27 @@ ${headers.map(header => renderLink(header)).join(' \n\n')}
 
 [Questions](#questions)
 
-${filteredSection('Installation',sections.installation)}
+${filterSection('Installation', installation)}
 
-${filteredSection('Usage',sections.usage)}
+${filterSection('Usage', usage)}
 
-## License
+${renderLicenseSection(license, confirmLicense)}
 
-${renderLicenseBadge(sections.license)}
+${filterSection('Contributing', contributing)}
 
-${filteredSection('Contributing',sections.contributing)}
+${filterSection('Tests', tests)}
 
-${filteredSection('Tests',sections.tests)}
+***
 
 ## Questions
 
-GitHub Username: ${github}
+${questions}
 
-GitHub Profile: https://github.com/${github}
+- GitHub Profile: [@${github}](https://github.com/${github})
 
-Email: ${email}
+- Email: ${email}
 
-Project Repository/URL: ${link}
+- Project Repository/URL: https://github.com/${github}/${link}
 
 `;
 }
