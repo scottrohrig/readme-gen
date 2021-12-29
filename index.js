@@ -7,9 +7,9 @@ const cla = process.argv.slice(2);
 const mockData = {
   title: 'Professional README Generator',
   description: 'Reduce the overhead when creating project repositories by using this readme generator. A node-based CLI to streamline the process of making professional project README files.',
-  installation: '`git clone` this repository. `npm i` to intall the requirements, etc. [`inquirer`](https://www.npmjs.com/package/inquirer)',
+  installation: '`git clone` this repository. `npm i` to intall the dependencies from `./package.json`, etc. [`inquirer`](https://www.npmjs.com/package/inquirer)',
   contributing: 'Not taking pull requests at the moment.',
-  usage: 'To run this Node.js CLI, navigate to the repositories root directory and type, `node index.js`. Follow the prompts to add your GitHub information and project details. You may view the output file located at `./dist/README.md`',
+  usage: "To run this Node.js CLI, navigate to the repository's root directory and execute the following command, `node index.js`. Follow the prompts to add your GitHub information and project details. You may view the output file located at `./dist/README.md`",
   tests: '',
   questions: 'To get in touch, see below:',
   license: 'CC0',
