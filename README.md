@@ -1,8 +1,10 @@
-# README Generator
+# Professional README Generator
+
+***
 
 ## Description
 
-A helpful streamline tool to reduce the overhead when creating project repositories.
+Reduce the overhead when creating project repositories by using this readme generator. A node-based CLI to streamline the process of making professional project README files.
 
 ## Table of Contents
 
@@ -36,16 +38,21 @@ To run this Node.js CLI, navigate to the repository directory and type, `node in
 
 
 
+## Contributing
+
+Not taking pull requests at the moment.
 
 
+
+***
 
 ## Questions
 
+To get in touch, see below:
 
+- GitHub Profile: [@scottrohrig](https://github.com/scottrohrig)
 
-GitHub Profile: [@scottrohrig](https://github.com/scottrohrig)
+- Email: scott.rohrig@gmail.com
 
-Email: scott.rohrig@gmail.com
-
-Project Repository/URL: https://github.com/scottrohrig/readme-gen
+- Project Repository/URL: https://github.com/scottrohrig/readme-gen
 
