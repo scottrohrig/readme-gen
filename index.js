@@ -1,16 +1,15 @@
-// TODO: Include packages needed for this application
 const fs = require('fs');
-const inquirer =  require('inquirer');
+const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-const cla = process.argv//.slice(1);
+const cla = process.argv.slice(2);
 
 const mockData = {
   title: 'Professional README Generator',
   description: 'Reduce the overhead when creating project repositories by using this readme generator. A node-based CLI to streamline the process of making professional project README files.',
   installation: '`git clone` this repository. `npm i` to intall the requirements, etc. [`inquirer`](https://www.npmjs.com/package/inquirer)',
   contributing: 'Not taking pull requests at the moment.',
-  usage: 'To run this Node.js CLI, navigate to the repository directory and type, `node index.js`. Follow the prompts to add your GitHub information and project details. You may view the output file located at `./dist/README.md`',
+  usage: 'To run this Node.js CLI, navigate to the repositories root directory and type, `node index.js`. Follow the prompts to add your GitHub information and project details. You may view the output file located at `./dist/README.md`',
   tests: '',
   questions: 'To get in touch, see below:',
   license: 'CC0',
@@ -20,12 +19,6 @@ const mockData = {
   link: 'readme-gen'
 };
 
-// TODO: Create an array of questions for user input
-/* README.md is generated with the title of my project and 
-sections entitled: Description, Table of Contents, Installation, 
-Usage, License, Contributing, Tests, and Questions
-Section Titles: Description, Installation, Usage, Contributing, and Tests
-license, gh-username, email */
 const questions = [
   {
     type: 'input',
@@ -69,7 +62,7 @@ const questions = [
   {
     type: 'input',
     name: 'link',
-    message: 'Enter your project url',
+    message: 'Enter your repository name',
     validate: link => {
       if (link) {
         return true;
@@ -96,12 +89,12 @@ const questions = [
   {
     type: 'input',
     name: 'installation',
-    message: 'INSTALLATION: What are the steps required to install your project?',    
+    message: 'INSTALLATION: What are the steps required to install your project?'
   },
   {
     type: 'input',
     name: 'usage',
-    message: 'USAGE: Provide instructions and examples for use.',    
+    message: 'USAGE: Provide instructions and examples for use.'
   },
   {
     type: 'input',
@@ -111,8 +104,7 @@ const questions = [
   {
     type: 'input',
     name: 'tests',
-    message: 'TESTS: Go the extra mile and write tests for your application. Then provide examples on how to run them.',
-    
+    message: 'TESTS: Go the extra mile and write tests for your application. Then provide examples on how to run them.'
   },
   {
     type: 'input',
@@ -130,22 +122,20 @@ const questions = [
     name: 'license',
     message: 'Choose a license type',
     choices: ['CC0', 'MIT', 'GPL-3.0', 'Apache-2.0'],
-    when: ({confirmLicense}) => confirmLicense 
+    when: ({ confirmLicense }) => confirmLicense
   }
 ];
 
-// TODO: Create a function to write README file
 const writeToFile = (fileContent) => {
-    fs.writeFile("./dist/README.md", fileContent, (err) => {
-      if (err) {
-        return console.log(err);
-      }
+  fs.writeFile("./dist/README.md", fileContent, (err) => {
+    if (err) {
+      return console.log(err);
+    }
 
-      console.log('File write success')
-    });
-  };
+    console.log('File write success')
+  });
+};
 
-// TODO: Create a function to initialize app
 function init() {
 
   if (cla.includes('-d')) {
@@ -156,8 +146,6 @@ function init() {
   inquirer.prompt(questions)
     .then(answers => {
       let data = generateMarkdown(answers);
-      console.log(data)
-      return;
       writeToFile(data);
     });
 }
