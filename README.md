@@ -6,6 +6,8 @@
 
 Reduce the overhead when creating project repositories by using this readme generator. A Node.js-based CLI to streamline the process of making professional project README files.
 
+![demo](./assets/demo.gif)
+
 ## Table of Contents
 
 [Description](#description) 
